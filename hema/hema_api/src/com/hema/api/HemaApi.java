@@ -128,6 +128,40 @@ public class HemaApi {
 		
 	}
 
+	public static HemaData getNearestPointFromDB(LatLng point){
+		
+		/*if(isInsideBoundary(point, boundary)){
+			return null;
+		}*/
+		
+		ArrayList<HemaData> possibleNearestPoints;
+		try {
+			possibleNearestPoints = DatabaseUtil.getInstance().getNearestPointFromDB(point.getLatitude(), point.getLongitude());
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
+		
+		HemaData nearestPoint = null;
+		Double tempDistance = null;
+		
+		for(HemaData hemaData : possibleNearestPoints){
+			
+			LatLng latLng = new LatLng(hemaData.lattitude, hemaData.longitude);
+			double distance = LatLngTool.distance(point, latLng, LengthUnit.METER);
+			
+			if(tempDistance == null || distance < tempDistance){
+				tempDistance = distance;
+				nearestPoint = hemaData;
+			}
+			
+		}
+		
+		return nearestPoint;
+		
+	}
+	
 	private static ArrayList<HemaData> getPossibleNearestPoints(LatLng point,
 			HashMap<Integer, HemaData> grid) {
 		// TODO Auto-generated method stub

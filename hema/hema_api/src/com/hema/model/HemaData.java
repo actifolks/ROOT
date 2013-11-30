@@ -31,6 +31,19 @@ public class HemaData {
 		this.south_point = south_point;
 	}
 	
+	public HemaData(Integer id, Double lattitude, Double longitude,
+			Integer east_point, Integer west_point, Integer north_point,
+			Integer south_point, Double elevation) {
+		this.id = id;
+		this.lattitude = lattitude;
+		this.longitude = longitude;
+		this.east_point = east_point;
+		this.west_point = west_point;
+		this.north_point = north_point;
+		this.south_point = south_point;
+		this.elevation = elevation;
+	}
+	
 	@Override
 	public boolean equals(Object obj) {
 		// TODO Auto-generated method stub
