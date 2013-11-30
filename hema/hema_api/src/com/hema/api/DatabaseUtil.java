@@ -38,13 +38,20 @@ private static DatabaseUtil databaseUtil;
 		return databaseUtil;
 	}
 	
-	public void insertPoint(Integer id, Double lattitude, Double longitude, Integer east_point, Integer west_point, Integer north_point, Integer south_point) throws SQLException{
+	public void insertPoint(Integer id, Double lattitude, Double longitude, Integer east_point, Integer west_point, Integer north_point, Integer south_point){
 		
-		PreparedStatement ps = con.prepareStatement("insert into hema_data(id, lattitude, longitude, east_point, west_point, north_point, south_point) " +
-				"values("+ id +", "+ lattitude +", "+ longitude +", "+ east_point +", "+ west_point  + ", "+ north_point  + ", "+ south_point  +")");
-		ps.execute();
-		ps.close();
-		con.commit();
+		PreparedStatement ps;
+		try {
+			ps = con.prepareStatement("insert into hema_data(id, lattitude, longitude, east_point, west_point, north_point, south_point) " +
+					"values("+ id +", "+ lattitude +", "+ longitude +", "+ east_point +", "+ west_point  + ", "+ north_point  + ", "+ south_point  +")");
+			ps.execute();
+			ps.close();
+			con.commit();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		
 	}
 	
@@ -152,5 +159,7 @@ private static DatabaseUtil databaseUtil;
 		return nearestPoints;
 		
 	}
+	
+	//public void updateGridId()
 	
 }
