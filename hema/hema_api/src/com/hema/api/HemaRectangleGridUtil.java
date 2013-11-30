@@ -1,12 +1,13 @@
 package com.hema.api;
 
-import com.javadocmd.simplelatlng.LatLng;
+import com.hema.model.GenericBoundary;
+import com.hema.model.RectangleBoundary;
 
 public class HemaRectangleGridUtil {
 
-	public static void makeRectangurlarGrip(LatLng point1, LatLng point2){
+	public static RectangleBoundary makeRectangurlarGrid(GenericBoundary userInputBoundary){
 		
-		
+		return null;
 		
 	}
 	

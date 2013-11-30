@@ -66,15 +66,29 @@ public class HemaApi {
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			} catch (ClassNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			} 
 			
 		}
 		
 		
 		return neigbhourPoint;
+		
+	}
+	
+	public static ArrayList<HemaData> getAllNeighbourPoints(HemaData presentPoint, HashMap<Integer, HemaData> grid){
+		
+		ArrayList<HemaData> allNeighbourPoints = new ArrayList<HemaData>();
+		
+		allNeighbourPoints.add(getNeighbourPoint(presentPoint, grid, Direction.EAST));
+		allNeighbourPoints.add(getNeighbourPoint(presentPoint, grid, Direction.WEST));
+		allNeighbourPoints.add(getNeighbourPoint(presentPoint, grid, Direction.NORTH));
+		allNeighbourPoints.add(getNeighbourPoint(presentPoint, grid, Direction.SOUTH));
+		allNeighbourPoints.add(getNeighbourPoint(presentPoint, grid, Direction.NORTHEAST));
+		allNeighbourPoints.add(getNeighbourPoint(presentPoint, grid, Direction.NORTHWEST));
+		allNeighbourPoints.add(getNeighbourPoint(presentPoint, grid, Direction.SOUTHEAST));
+		allNeighbourPoints.add(getNeighbourPoint(presentPoint, grid, Direction.SOUTHWEST));
+		
+		return allNeighbourPoints;
 		
 	}
 	

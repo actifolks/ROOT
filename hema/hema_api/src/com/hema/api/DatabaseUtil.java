@@ -5,9 +5,12 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Queue;
 
 import com.hema.model.HemaData;
-import com.javadocmd.simplelatlng.LatLng;
+import com.hema.model.path.DownStreamPath;
 
 public class DatabaseUtil {
 
@@ -20,9 +23,17 @@ private static DatabaseUtil databaseUtil;
 		con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:riverdata", "system", "riverdata");
 	}
 	
-	public static DatabaseUtil getInstance() throws SQLException, ClassNotFoundException{
+	public static DatabaseUtil getInstance(){
 		if(databaseUtil == null){
-			databaseUtil = new DatabaseUtil();
+			try {
+				databaseUtil = new DatabaseUtil();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		return databaseUtil;
 	}
@@ -61,6 +72,12 @@ private static DatabaseUtil databaseUtil;
 		ps.close();
 		con.commit();
 		return data;
+	}
+
+	public void persistQueueData(Queue<HemaData> queueData, HashMap<Integer, DownStreamPath> downStreamPathPerPoint, ArrayList<DownStreamPath> finalDownStreamPaths){
+		
+		
+		
 	}
 	
 }

@@ -10,4 +10,7 @@ public class RectangleBoundary {
 	public HemaData p4;
 	public HashMap<Integer, HemaData> grid;
 	
+	public HemaData startPoint;
+	public HemaData endPoint;
+	
 }
